@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}{{ quiz.title }} - Take Quiz{% endblock %}
+{% block content %}
+    <h1 class="text-3xl font-bold mb-4">{{ quiz.title }}</h1>
+    <div class="mb-4">
+        <a href="{{ url_for('view_quizzes', course_id=quiz.course_id) }}" class="text-blue-600 hover:underline">Back to Quizzes</a>
+    </div>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="mb-4">
+            <label class="block text-gray-700">Question: {{ quiz.question }}</label>
+            {{ form.answer(class="w-full p-2 border rounded mt-1") }}
+        </div>
+        {{ form.submit(class="bg-purple-600 text-white px-4 py-2 rounded") }}
+    </form>
+{% endblock %}
